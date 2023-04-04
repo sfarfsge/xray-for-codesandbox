@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 UUID=5aaed9b7-7fe3-47c3-bb52-db59859ce198
-VMESS_WSPATH=/vmess
-VLESS_WSPATH=/vless
-TROJAN_WSPATH=/trojan
+VMESS_WSPATH=/$UUID-vmess
+VLESS_WSPATH=/$UUID-vless
+TROJAN_WSPATH=/$UUID-trojan
 SS_WSPATH=/shadowsocks
 
 generate_config() {
@@ -21,7 +21,7 @@ generate_config() {
             "settings":{
                 "clients":[
                     {
-                        "id":"${UUID}",
+                        "id":"$UUID",
                         "flow":"xtls-rprx-vision"
                     }
                 ],
@@ -31,19 +31,19 @@ generate_config() {
                         "dest":3001
                     },
                     {
-                        "path":"${VLESS_WSPATH}",
+                        "path":"$VLESS_WSPATH",
                         "dest":3002
                     },
                     {
-                        "path":"${VMESS_WSPATH}",
+                        "path":"$VMESS_WSPATH",
                         "dest":3003
                     },
                     {
-                        "path":"${TROJAN_WSPATH}",
+                        "path":"$TROJAN_WSPATH",
                         "dest":3004
                     },
                     {
-                        "path":"${SS_WSPATH}",
+                        "path":"$SS_WSPATH",
                         "dest":3005
                     }
                 ]
@@ -59,7 +59,7 @@ generate_config() {
             "settings":{
                 "clients":[
                     {
-                        "id":"${UUID}"
+                        "id":"$UUID"
                     }
                 ],
                 "decryption":"none"
@@ -76,7 +76,7 @@ generate_config() {
             "settings":{
                 "clients":[
                     {
-                        "id":"${UUID}",
+                        "id":"$UUID",
                         "level":0
                     }
                 ],
@@ -86,7 +86,7 @@ generate_config() {
                 "network":"ws",
                 "security":"none",
                 "wsSettings":{
-                    "path":"${VLESS_WSPATH}"
+                    "path":"$VLESS_WSPATH"
                 }
             },
             "sniffing":{
@@ -105,7 +105,7 @@ generate_config() {
             "settings":{
                 "clients":[
                     {
-                        "id":"${UUID}",
+                        "id":"$UUID",
                         "alterId":0
                     }
                 ]
@@ -113,7 +113,7 @@ generate_config() {
             "streamSettings":{
                 "network":"ws",
                 "wsSettings":{
-                    "path":"${VMESS_WSPATH}"
+                    "path":"$VMESS_WSPATH"
                 }
             },
             "sniffing":{
@@ -132,7 +132,7 @@ generate_config() {
             "settings":{
                 "clients":[
                     {
-                        "password":"${UUID}"
+                        "password":"$UUID"
                     }
                 ]
             },
@@ -140,7 +140,7 @@ generate_config() {
                 "network":"ws",
                 "security":"none",
                 "wsSettings":{
-                    "path":"${TROJAN_WSPATH}"
+                    "path":"$TROJAN_WSPATH"
                 }
             },
             "sniffing":{
@@ -160,7 +160,7 @@ generate_config() {
                 "clients":[
                     {
                         "method":"chacha20-ietf-poly1305",
-                        "password":"${UUID}"
+                        "password":"$UUID"
                     }
                 ],
                 "decryption":"none"
@@ -168,7 +168,7 @@ generate_config() {
             "streamSettings":{
                 "network":"ws",
                 "wsSettings":{
-                    "path":"${SS_WSPATH}"
+                    "path":"$SS_WSPATH"
                 }
             },
             "sniffing":{
